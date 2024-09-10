@@ -1,0 +1,249 @@
+:root{
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #232323;
+    --primary-color: #fe5430;
+    --border-color: #dbdbdb; 
+    --star-gold-color: #ffce3e;
+
+    --navbar-height: 34px;
+    --header-height: 120px;
+    --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+    --header-sort-bar-height: 46px;   
+
+}
+
+*{
+    box-sizing: inherit;
+}
+html{
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    
+}
+/* responsive */
+
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+    
+    /* margin không phải để chơi tại vì trong 1 grid có thể có nhiều row nên margin dùng để các các row ra
+    nó cũng có cấu trúc như column v thoi nó cũng cách từng thằng column ra bằng cách đó thì thằng row nó cũng v */
+    
+}
+
+/* text column */
+.grid__column-2 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
+
+}
+.grid__column-2-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+.grid__column-10 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.3333%;
+}
+
+/* animation mờ tới rõ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+
+    }
+    to{
+        opacity: 1;
+
+    }
+}
+/* animation lớn dần */
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+
+    }
+    to{
+        transform: scale(var(--growth-to));
+
+    }
+}
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: fadeIn linear 0.2s; 
+
+}
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+
+}
+.modal__body {
+    --growth-from: 0.7;
+    --growth-to: 1;
+    width: 500px;
+    margin: auto;
+    background-color: var(--white-color);
+    position: relative;
+    z-index: 1;
+    animation: growth linear 0.2s; 
+
+
+}
+/* btn style */
+.btn {
+    min-width: 124px;
+    height: 34px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 12px;
+    line-height: 1.6rem;
+
+}
+.btn.btn--normal:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.btn.btn--primary {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+.btn.btn--size-s{
+    height: 32px;
+    font-size: 1.2rem   ;
+    padding: 0 8px;
+
+}
+.btn.btn--disable{
+    cursor: default;
+    color: #949494;
+    background-color: #c3c3c3;
+}
+/* select */
+.select-input {
+    background-color: var(--white-color);
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 200px;
+    height: 34px;
+    padding: 0 12px;
+    position: relative;
+}
+/* hover select-input */
+.select-input:hover .select-input__list {
+    display: block;
+}
+.select-input__lable {
+    font-size: 1.6rem;
+    color: var(--black-color);
+    font-weight: 400;
+}
+
+.select-input__icon {
+    color:#838383 ;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+.select-input__list {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    left: 0;
+    background-color: var(--white-color);
+    border-radius: 2px;
+    list-style: none;
+    padding-left: 0;
+    padding: 8px 16px;
+    display: none;
+    z-index: 1;
+
+}
+.select-input::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: -10px;
+    height: 20px;
+
+}
+
+   
+.select-input__link {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.4rem;
+    padding: 4px 0;
+
+    display: block;
+
+}
+
+/* hover select-input__link   */
+
+.select-input__link:hover {
+    color: var(--primary-color);
+}
+
+/* pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    
+}
+.pagination-item {
+    margin: 0 10px;
+    
+}
+.pagination-item__link {
+    --height: 30px;
+    font-size: 2rem;
+    font-weight: 300;
+    text-decoration: none;
+    color: #939393;
+    min-width: 40px;
+    height: var(--height);
+    display: block;
+    text-align: center;
+    line-height: var(--height);
+    border-radius: 2px;
+}
+.pagination-item__icon  {
+     
+}
+.pagination-item--active .pagination-item__link {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.pagination-item--active .pagination-item__link:hover {
+    background-color: #f4836d;
+}
+
+
